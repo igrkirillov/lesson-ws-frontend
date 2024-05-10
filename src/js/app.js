@@ -1,6 +1,6 @@
-import TicketsWidget from "./TicketsWidget";
+import ChatWidget from "./ChatWidget";
 
 document.addEventListener("DOMContentLoaded", () => {
   const mainElement = document.querySelector("main");
-  new TicketsWidget(mainElement);
+  new ChatWidget(mainElement);
 });
