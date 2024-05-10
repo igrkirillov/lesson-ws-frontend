@@ -1,6 +1,16 @@
 import ChatWidget from "./ChatWidget";
+import EnterDialogWidget from "./EnterDialogWidget";
+import {createNewUserOnServer} from "./serverApi";
+
+let mainElement;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const mainElement = document.querySelector("main");
-  new ChatWidget(mainElement);
+  mainElement = document.querySelector("main");
+  new EnterDialogWidget(mainElement, createChat);
 });
+
+function createChat(userName) {
+  createNewUserOnServer(userName).then(user => {
+    new ChatWidget(mainElement, user);
+  });
+}

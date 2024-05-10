@@ -1,24 +1,22 @@
+import UsersWidget from "./UsersWidget";
+import MessagesWidget from "./MessagesWidget";
+
 export default class ChatWidget {
-  constructor(ownerElement) {
+  constructor(ownerElement, user) {
     this.element = this.createElement(ownerElement);
-    this.addListeners();
+    this.user = user;
+    this.usersWidget = new UsersWidget(this.element, this);
+    this.messagesWidget = new MessagesWidget(this.element, this);
   }
 
   createElement(ownerElement) {
     const element = document.createElement("div");
-    element.classList.add("tickets");
-    element.innerHTML = `
-    <div class="tickets-toolbar">
-        <input type="button" class="tickets-add" value="Добавить тикет">
-    </div>
-    <div class="tickets-container">
-        
-    </div>`;
+    element.classList.add("chat");
     ownerElement.appendChild(element);
     return element;
   }
 
-  addListeners() {
+  get currentUser() {
+    return this.user;
   }
-
 }

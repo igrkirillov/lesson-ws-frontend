@@ -10,159 +10,80 @@ body {
     text-align: center;
 }
 
-.tickets {
-    max-width: 600px;
-    margin: auto;
-}
-
-.tickets-toolbar {
+.chat {
     display: flex;
-    justify-content: flex-end;
+    margin: auto;
+    max-width: 400px;
+    height: 400px;
 }
 
-.tickets-container {
-    margin-top: 4px;
-}
-
-.tickets-add {
-    display: block;
-}
-
-.ticket {
-    border: 1px solid gray;
-    border-radius: 4px;
-    padding: 2px;
-}
-
-.ticket:nth-child(n + 2) {
-    margin-top: 4px;
-}
-
-.ticket-row {
+.user {
     display: flex;
     align-items: center;
 }
 
-.ticket-status {
+.user:nth-child(n + 2) {
+    margin-top: 4px;
+}
+
+.user-ava {
     display: block;
     width: 40px;
     height: 40px;
-}
-
-.visually-hidden {
-    position: fixed;
-    transform: scale(0);
-}
-
-.ticket-status-switch {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
-    border-radius: 50%;
-}
-
-.ticket-status:checked + .ticket-status-switch:after {
-    position: absolute;
-    content: "V";
-    top: 5px;
-    left: 7px;
-}
-
-.ticket-name {
-    display: block;
-    flex-grow: 1;
-    margin: auto 2px;
-}
-
-.ticket-datetime {
-    display: block;
-    margin: auto 2px;
-}
-
-.ticket-toolbar {
-    display: flex;
-    margin: auto 2px;
-}
-
-.ticket-toolbar-element {
-    display: block;
     border: 1px solid gray;
     border-radius: 50%;
-    margin: auto 2px;
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
-    text-align: center;
-    text-decoration: none;
 }
 
-.ticket-dialog {
-    width: 400px;
-    height: 250px;
-    position: absolute;
-    top: calc(30% - 250px/2);
-    left: calc(50% - 400px/2);
-    border: 1px solid black;
-    border-radius: 10px;
-    z-index: 2;
-    background-color: white;
-}
-
-.ticket-dialog-base {
-    content: "";
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: gray;
-    opacity: 90%;
-}
-
-.ticket-dialog-title {
-    margin: auto;
-    text-align: center;
-}
-
-.ticket-dialog-container {
-    margin-top: 20px;
-    padding: 0 10px;
-}
-
-.ticket-dialog-name {
+.user-name {
     display: block;
-    width: 100%;
-}
-
-.ticket-dialog-description {
-    display: block;
-    width: 100%;
-    min-height: 100px;
-}
-
-.ticket-dialog-buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-}
-
-.ticket-dialog-cancel {
-    margin-right: 4px;
-}
-
-.ticket-dialog-ok {
     margin-left: 4px;
 }
 
-.display-none {
-    display: none;
+.messages {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 10px;
+    padding: 2px;
+    border: 1px solid gray;
+    border-radius: 4px;
 }
 
-.yesno-dialog {
+.messages-feed {
+    flex-grow: 1;
+}
+
+.messages-input-panel {
+    display: flex;
+}
+
+.message {
+    display: flex;
+}
+
+.message-own {
+    justify-content: flex-end;
+}
+
+.message-another {
+    justify-content: flex-start;
+}
+
+.message-title {
+    font-size: 0.8em;
+}
+
+.message-input-text {
+    width: 100%;
+}
+
+.message-input-button {
+    margin-left: 4px;
+}
+
+.enter-dialog {
     width: 400px;
-    height: 150px;
+    height: 110px;
     position: absolute;
     top: calc(30% - 250px/2);
     left: calc(50% - 400px/2);
@@ -172,7 +93,7 @@ body {
     background-color: white;
 }
 
-.yesno-dialog-base {
+.enter-dialog-base {
     content: "";
     position: absolute;
     top:0;
@@ -184,37 +105,32 @@ body {
     opacity: 90%;
 }
 
-.yesno-dialog-title {
+.enter-dialog-title {
     margin: auto;
     text-align: center;
 }
 
-.yesno-dialog-container {
+.enter-dialog-container {
     margin-top: 20px;
     padding: 0 10px;
 }
 
-.yesno-dialog-name {
+.enter-dialog-name {
     display: block;
     width: 100%;
 }
 
-.yesno-dialog-description {
+.enter-dialog-username {
     display: block;
     width: 100%;
-    min-height: 100px;
 }
 
-.yesno-dialog-buttons {
+.enter-dialog-buttons {
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
 }
 
-.yesno-dialog-cancel {
-    margin-right: 4px;
-}
-
-.yesno-dialog-ok {
+.enter-dialog-ok {
     margin-left: 4px;
 }
