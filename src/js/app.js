@@ -12,5 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
 function createChat(userName) {
   createNewUserOnServer(userName).then(user => {
     new ChatWidget(mainElement, user);
-  });
+  }).catch(e => processError(e.message));
+}
+
+function processError(errorText) {
+  alert(errorText);
+  new EnterDialogWidget(mainElement, createChat);
 }

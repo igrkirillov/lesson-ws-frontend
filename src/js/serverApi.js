@@ -17,7 +17,13 @@ export async function createNewUserOnServer(name) {
     })
   })
     .then((response) => response.json())
-    .then((json) => parseUserJson(json.user));
+    .then((json) => {
+      if (json.status == "ok") {
+        return parseUserJson(json.user);
+      } else {
+        throw new Error(json.message);
+      }
+    });
 }
 
 function parseUserJson(json) {
