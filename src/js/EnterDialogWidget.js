@@ -32,15 +32,27 @@ export default class EnterDialogWidget {
     return this.element.querySelector(".enter-dialog-username");
   }
 
+  get okButtonElement() {
+    return this.element.querySelector(".enter-dialog-ok");
+  }
+
   addListeners() {
     this.onClickOk = this.onClickOk.bind(this);
-    const okButtonElement = this.element.querySelector(".enter-dialog-ok");
-    okButtonElement.addEventListener("click", this.onClickOk);
+    this.onNameKeyDown = this.onNameKeyDown.bind(this);
+    this.okButtonElement.addEventListener("click", this.onClickOk);
+    this.nameElement.addEventListener("keydown", this.onNameKeyDown);
   }
 
   onClickOk() {
     this.callback(this.nameElement.value);
     this.close();
+  }
+
+  onNameKeyDown(event) {
+    if (event.key === "Enter" || event.keyCode === 13) {
+      this.callback(this.nameElement.value);
+      this.close();
+    }
   }
 
   close() {
