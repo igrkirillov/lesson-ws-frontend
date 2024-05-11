@@ -5,6 +5,7 @@ import SpinnerDialogWidget from "./SpinnerDialogWidget";
 
 let mainElement;
 let spinnerDialog;
+let chatWidget;
 
 document.addEventListener("DOMContentLoaded", () => {
   mainElement = document.querySelector("main");
@@ -15,12 +16,13 @@ function createChat(userName) {
   spinnerDialog = new SpinnerDialogWidget(mainElement);
   createNewUserOnServer(userName)
     .then((user) => {
-      new ChatWidget(mainElement, user);
+      chatWidget = new ChatWidget(mainElement, user);
     })
     .catch((e) => processError(e.message))
     .finally(() => {
       if (spinnerDialog && !spinnerDialog.isClosed()) {
         spinnerDialog.close();
+        chatWidget.setFocus();
       }
     })
 }

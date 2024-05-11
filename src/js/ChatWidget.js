@@ -44,4 +44,8 @@ export default class ChatWidget {
   sendMessage(message) {
     sendWsMessage(this.ws, message);
   }
+
+  setFocus() {
+    this.messagesWidget.setFocus();
+  }
 }
