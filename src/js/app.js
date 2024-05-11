@@ -10,11 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function createChat(userName) {
-  createNewUserOnServer(userName)
-    .then((user) => {
-      new ChatWidget(mainElement, user);
-    })
-    .catch((e) => processError(e.message));
+  (async () => {
+    await createNewUserOnServer(userName)
+      .then((user) => {
+        new ChatWidget(mainElement, user);
+      })
+      .catch((e) => processError(e.message));
+  })();
 }
 
 function processError(errorText) {
