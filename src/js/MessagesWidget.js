@@ -7,6 +7,7 @@ export default class MessagesWidget {
     this.messageWidgets = [];
     this.chatWidget = chatWidget;
     this.addListeners();
+    this.setFocus();
   }
 
   createElement(ownerElement) {
@@ -76,5 +77,9 @@ export default class MessagesWidget {
     this.messageWidgets.push(
       new MessageWidget(this.messagesFeedElement, this, data)
     );
+  }
+
+  setFocus() {
+    this.messageInputTextElement.focus();
   }
 }
