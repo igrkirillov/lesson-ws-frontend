@@ -18,7 +18,7 @@ export async function createNewUserOnServer(name) {
   })
     .then((response) => response.json())
     .then((json) => {
-      if (json.status == "ok") {
+      if (json.status === "ok") {
         return parseUserJson(json.user);
       } else {
         throw new Error(json.message);
@@ -47,6 +47,10 @@ export function addWsMessageListener(ws, messageCallback, usersCallback) {
 
 export function sendWsMessage(ws, message) {
   ws.send(JSON.stringify({...message, type: "send"}));
+}
+
+export function sendWsExit(ws, user) {
+  ws.send(JSON.stringify({type: "exit", user: user}));
 }
 
 function parseMessageJson(json) {
