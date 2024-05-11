@@ -22,9 +22,9 @@ function createChat(userName) {
     .finally(() => {
       if (spinnerDialog && !spinnerDialog.isClosed()) {
         spinnerDialog.close();
-        if (chatWidget) {
-          chatWidget.setFocus();
-        }
+      }
+      if (chatWidget) {
+        chatWidget.setFocus();
       }
     })
 }
