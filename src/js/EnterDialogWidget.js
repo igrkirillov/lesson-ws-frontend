@@ -56,8 +56,8 @@ export default class EnterDialogWidget {
   }
 
   close() {
-    const okButtonElement = this.element.querySelector(".enter-dialog-ok");
-    okButtonElement.removeEventListener("click", this.onClickOk);
+    this.okButtonElement.removeEventListener("click", this.onClickOk);
+    this.nameElement.removeEventListener("keydown", this.onNameKeyDown)
     this.ownerElement.removeChild(this.element);
   }
 
