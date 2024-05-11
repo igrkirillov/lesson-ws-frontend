@@ -1,3 +1,5 @@
+import {toChatDateFormat} from "./utils";
+
 export default class MessageWidget {
   constructor(ownerElement, messagesWidget, data) {
     this.element = this.createElement(ownerElement, messagesWidget, data);
@@ -16,8 +18,8 @@ export default class MessageWidget {
     element.innerHTML = `
         <div class="message-container">
             <div class="message-title">
-                <span>${data.user.name}</span>
-                <span>${data.dateTime.toLocaleDateString()}</span>
+                <span>${data.user.name}, </span>
+                <span>${toChatDateFormat(data.dateTime)}</span>
             </div>
             <div class="message-content">
                 <span>${data.text}</span>
