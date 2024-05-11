@@ -1,4 +1,5 @@
-import spinner from "/src/icons/spinner.gif"
+import spinner from "/src/icons/spinner.gif";
+
 export default class SpinnerDialogWidget {
   constructor(ownerElement) {
     this.ownerElement = ownerElement;

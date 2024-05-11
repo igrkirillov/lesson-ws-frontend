@@ -9,7 +9,7 @@ avaImages.push(ava2);
 avaImages.push(ava3);
 avaImages.push(ava4);
 
-export function getNextImage() {
+export function getNextAvaImage() {
   const nextIndex = +(Math.random() * 10).toFixed(0) % avaImages.length;
   return avaImages[nextIndex];
 }

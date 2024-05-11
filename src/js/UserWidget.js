@@ -1,4 +1,4 @@
-import { getNextImage } from "./utils";
+import { getNextAvaImage } from "./utils";
 
 export default class UserWidget {
   constructor(ownerElement, user) {
@@ -11,7 +11,7 @@ export default class UserWidget {
     const element = document.createElement("div");
     element.classList.add("user");
     element.innerHTML = `
-        <img class="user-ava" src="${getNextImage()}" alt="No photo">
+        <img class="user-ava" src="${getNextAvaImage()}" alt="No photo">
         <span class="user-name">${user.name}</span>
     `;
     ownerElement.appendChild(element);
