@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function createChat(userName) {
   createNewUserOnServer(userName).then(user => {
+    console.dir(user);
     new ChatWidget(mainElement, user);
   });
 }

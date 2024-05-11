@@ -4,6 +4,7 @@ export default class EnterDialogWidget {
     this.element = this.createElement(ownerElement);
     this.callback = callback;
     this.addListeners();
+    this.setFocus();
   }
 
   createElement(ownerElement) {
@@ -12,7 +13,7 @@ export default class EnterDialogWidget {
     element.innerHTML = `
     <div class="enter-dialog">
       <div class="enter-dialog-title">
-          Вход в чат. Введите своё имя.
+          Вход в чат. Введите своё имя:
       </div>
       <div class="enter-dialog-container">
           <div class="enter-dialog-message">
@@ -46,5 +47,9 @@ export default class EnterDialogWidget {
     const okButtonElement = this.element.querySelector(".enter-dialog-ok");
     okButtonElement.removeEventListener("click", this.onClickOk);
     this.ownerElement.removeChild(this.element);
+  }
+
+  setFocus() {
+    this.nameElement.focus();
   }
 }

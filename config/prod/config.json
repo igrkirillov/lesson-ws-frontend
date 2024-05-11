@@ -1,3 +1,4 @@
 {
-  "serverUrl": "https://lesson-helpdesk-backend.onrender.com"
+  "serverUrl": "https://lesson-ws-backend.onrender.com",
+  "wsUrl": "ws://lesson-ws-backend.onrender.com:7070"
 }

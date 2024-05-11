@@ -1,12 +1,15 @@
 import UsersWidget from "./UsersWidget";
 import MessagesWidget from "./MessagesWidget";
+import {addWsMessageListener, createWebSocket, sendWsMessage} from "./serverApi";
 
 export default class ChatWidget {
   constructor(ownerElement, user) {
     this.element = this.createElement(ownerElement);
     this.user = user;
+    this.ws = createWebSocket();
     this.usersWidget = new UsersWidget(this.element, this);
     this.messagesWidget = new MessagesWidget(this.element, this);
+    this.addListeners();
   }
 
   createElement(ownerElement) {
@@ -18,5 +21,15 @@ export default class ChatWidget {
 
   get currentUser() {
     return this.user;
+  }
+
+  addListeners() {
+    const messageCallback = this.messagesWidget.receivedMessage.bind(this.messagesWidget);
+    const usersCallback = this.usersWidget.reload.bind(this.usersWidget);
+    addWsMessageListener(this.ws, messageCallback, usersCallback);
+  }
+
+  sendMessage(message) {
+    sendWsMessage(this.ws, message);
   }
 }

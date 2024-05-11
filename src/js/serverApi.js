@@ -1,7 +1,9 @@
 import config from "./config.json";
 import User from "./User";
+import Message from "./Message";
 
 const baseUrl = config.serverUrl;
+const wsUrl = config.wsUrl;
 
 export async function createNewUserOnServer(name) {
   const url = baseUrl + "/new-user";
@@ -10,14 +12,41 @@ export async function createNewUserOnServer(name) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: {
+    body: JSON.stringify({
       name: name
-    }
+    })
   })
     .then((response) => response.json())
-    .then((json) => parseDtoJson(json));
+    .then((json) => parseUserJson(json.user));
 }
 
-function parseDtoJson(json) {
+function parseUserJson(json) {
   return new User(json.id, json.name);
+}
+
+export function createWebSocket() {
+  return new WebSocket(wsUrl);
+}
+
+export function addWsMessageListener(ws, messageCallback, usersCallback) {
+  ws.addEventListener("message", (event) => {
+    const json = JSON.parse(event.data);
+    if (json && json.type && json.type === "send") {
+      messageCallback(parseMessageJson(json));
+    } else {
+      usersCallback(parseUsersJson(json));
+    }
+  });
+}
+
+export function sendWsMessage(ws, message) {
+  ws.send(JSON.stringify({...message, type: "send"}));
+}
+
+function parseMessageJson(json) {
+  return new Message(parseUserJson(json.user), new Date(json.dateTime), json.text);
+}
+
+function parseUsersJson(arrayJson) {
+  return arrayJson.map(dtoJson => new User(dtoJson.id, dtoJson.name));
 }

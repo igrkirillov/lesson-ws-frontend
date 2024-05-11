@@ -1,35 +1,12 @@
 import MessageWidget from "./MessageWidget";
+import Message from "./Message";
 
 export default class MessagesWidget {
   constructor(ownerElement, chatWidget) {
     this.element = this.createElement(ownerElement);
     this.messageWidgets = [];
     this.chatWidget = chatWidget;
-
-    this.messageWidgets.push(new MessageWidget(this.messagesFeedElement, this, {
-      text: "111111",
-      dateTime: new Date(),
-      user: {
-        name: "Alexandra",
-        id: 1
-      }
-    }));
-    this.messageWidgets.push(new MessageWidget(this.messagesFeedElement, this, {
-      text: "22222",
-      dateTime: new Date(),
-      user: {
-        name: "Ivan",
-        id: 2
-      }
-    }));
-    this.messageWidgets.push(new MessageWidget(this.messagesFeedElement, this, {
-      text: "444444",
-      dateTime: new Date(),
-      user: {
-        name: "You",
-        id: 4
-      }
-    }));
+    this.addListeners();
   }
 
   createElement(ownerElement) {
@@ -48,11 +25,33 @@ export default class MessagesWidget {
     return element;
   }
 
+  addListeners() {
+    this.onMessageInputButtonClick = this.onMessageInputButtonClick.bind(this);
+    this.messageInputButtonElement.addEventListener("click", this.onMessageInputButtonClick);
+  }
+
   get messagesFeedElement() {
     return this.element.querySelector(".messages-feed");
   }
 
+  get messageInputTextElement() {
+    return this.element.querySelector(".message-input-text");
+  }
+
+  get messageInputButtonElement() {
+    return this.element.querySelector(".message-input-button");
+  }
+
   get currentUser() {
     return this.chatWidget.currentUser;
+  }
+
+  onMessageInputButtonClick() {
+    const text = this.messageInputTextElement.value;
+    this.chatWidget.sendMessage(new Message(this.currentUser, new Date(), text));
+  }
+
+  receivedMessage(data) {
+    this.messageWidgets.push(new MessageWidget(this.messagesFeedElement, this, data));
   }
 }
