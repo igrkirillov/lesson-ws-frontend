@@ -6,7 +6,6 @@ export default class MessageWidget {
   }
 
   createElement(ownerElement, messagesWidget, data) {
-    console.dir(data);
     const element = document.createElement("div");
     element.classList.add("message");
     if (data.user.id === messagesWidget.currentUser.id) {

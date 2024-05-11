@@ -27,7 +27,9 @@ export default class MessagesWidget {
 
   addListeners() {
     this.onMessageInputButtonClick = this.onMessageInputButtonClick.bind(this);
+    this.onMessageInputTextKeyDown = this.onMessageInputTextKeyDown.bind(this);
     this.messageInputButtonElement.addEventListener("click", this.onMessageInputButtonClick);
+    this.messageInputTextElement.addEventListener("keydown", this.onMessageInputTextKeyDown);
   }
 
   get messagesFeedElement() {
@@ -47,7 +49,18 @@ export default class MessagesWidget {
   }
 
   onMessageInputButtonClick() {
-    const text = this.messageInputTextElement.value;
+    this.sendMessage(this.messageInputTextElement.value);
+    this.messageInputTextElement.value = "";
+  }
+
+  onMessageInputTextKeyDown(event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+      this.sendMessage(this.messageInputTextElement.value);
+      this.messageInputTextElement.value = "";
+    }
+  }
+
+  sendMessage(text) {
     this.chatWidget.sendMessage(new Message(this.currentUser, new Date(), text));
   }
 
