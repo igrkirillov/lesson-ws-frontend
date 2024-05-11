@@ -1,4 +1,4 @@
-import {getNextImage} from "./utils";
+import { getNextImage } from "./utils";
 
 export default class UserWidget {
   constructor(ownerElement, user) {

@@ -1,6 +1,6 @@
 import ChatWidget from "./ChatWidget";
 import EnterDialogWidget from "./EnterDialogWidget";
-import {createNewUserOnServer} from "./serverApi";
+import { createNewUserOnServer } from "./serverApi";
 
 let mainElement;
 
@@ -10,9 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function createChat(userName) {
-  createNewUserOnServer(userName).then(user => {
-    new ChatWidget(mainElement, user);
-  }).catch(e => processError(e.message));
+  createNewUserOnServer(userName)
+    .then((user) => {
+      new ChatWidget(mainElement, user);
+    })
+    .catch((e) => processError(e.message));
 }
 
 function processError(errorText) {

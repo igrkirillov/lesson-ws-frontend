@@ -13,8 +13,8 @@ export async function createNewUserOnServer(name) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name: name
-    })
+      name: name,
+    }),
   })
     .then((response) => response.json())
     .then((json) => {
@@ -46,17 +46,21 @@ export function addWsMessageListener(ws, messageCallback, usersCallback) {
 }
 
 export function sendWsMessage(ws, message) {
-  ws.send(JSON.stringify({...message, type: "send"}));
+  ws.send(JSON.stringify({ ...message, type: "send" }));
 }
 
 export function sendWsExit(ws, user) {
-  ws.send(JSON.stringify({type: "exit", user: user}));
+  ws.send(JSON.stringify({ type: "exit", user: user }));
 }
 
 function parseMessageJson(json) {
-  return new Message(parseUserJson(json.user), new Date(json.dateTime), json.text);
+  return new Message(
+    parseUserJson(json.user),
+    new Date(json.dateTime),
+    json.text
+  );
 }
 
 function parseUsersJson(arrayJson) {
-  return arrayJson.map(dtoJson => new User(dtoJson.id, dtoJson.name));
+  return arrayJson.map((dtoJson) => new User(dtoJson.id, dtoJson.name));
 }

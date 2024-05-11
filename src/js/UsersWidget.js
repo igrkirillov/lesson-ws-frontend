@@ -20,15 +20,23 @@ export default class UsersWidget {
   }
 
   clearFromRemovedUsers(userArray) {
-    const idSet = new Set(userArray.map(user => user.id));
-    const userWidgetsForRemoving = this.userWidgets.filter(userWidget => !idSet.has(userWidget.user.id));
-    userWidgetsForRemoving.forEach(userWidget => userWidget.remove());
-    this.userWidgets = this.userWidgets.filter(userWidget => idSet.has(userWidget.user.id));
+    const idSet = new Set(userArray.map((user) => user.id));
+    const userWidgetsForRemoving = this.userWidgets.filter(
+      (userWidget) => !idSet.has(userWidget.user.id)
+    );
+    userWidgetsForRemoving.forEach((userWidget) => userWidget.remove());
+    this.userWidgets = this.userWidgets.filter((userWidget) =>
+      idSet.has(userWidget.user.id)
+    );
   }
 
   createWidgetsForNewUsers(userArray) {
-    const idExistsSet = new Set(this.userWidgets.map(userWidget => userWidget.user.id));
-    const usersForCreating = userArray.filter(user => !idExistsSet.has(user.id));
+    const idExistsSet = new Set(
+      this.userWidgets.map((userWidget) => userWidget.user.id)
+    );
+    const usersForCreating = userArray.filter(
+      (user) => !idExistsSet.has(user.id)
+    );
     for (const user of usersForCreating) {
       const userWidget = new UserWidget(this.element, user);
       this.userWidgets.push(userWidget);
