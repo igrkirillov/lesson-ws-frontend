@@ -1,0 +1,166 @@
+body {
+    font-size: 14pt;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.title {
+    text-align: center;
+}
+
+.chat {
+    display: flex;
+    margin: auto;
+    max-width: 400px;
+    height: 400px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.user:nth-child(n + 2) {
+    margin-top: 4px;
+}
+
+.user-ava {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 50%;
+}
+
+.user-name {
+    display: block;
+    margin-left: 4px;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 10px;
+    padding: 2px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.messages-feed {
+    flex-grow: 1;
+}
+
+.messages-input-panel {
+    display: flex;
+}
+
+.message {
+    display: flex;
+}
+
+.message-own {
+    justify-content: flex-end;
+}
+
+.message-another {
+    justify-content: flex-start;
+}
+
+.message-title {
+    font-size: 0.8em;
+}
+
+.message-input-text {
+    width: 100%;
+}
+
+.message-input-button {
+    margin-left: 4px;
+}
+
+.enter-dialog {
+    width: 400px;
+    height: 110px;
+    position: absolute;
+    top: calc(30% - 250px/2);
+    left: calc(50% - 400px/2);
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 2;
+    background-color: white;
+}
+
+.enter-dialog-base {
+    content: "";
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: gray;
+    opacity: 90%;
+}
+
+.enter-dialog-title {
+    margin: auto;
+    text-align: center;
+}
+
+.enter-dialog-container {
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.enter-dialog-name {
+    display: block;
+    width: 100%;
+}
+
+.enter-dialog-username {
+    display: block;
+    width: 100%;
+}
+
+.enter-dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.enter-dialog-ok {
+    margin-left: 4px;
+}
+
+.spinner-dialog {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px/2);
+    z-index: 2;
+    background-color: gray;
+}
+
+.spinner-dialog-base {
+    content: "";
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: gray;
+    opacity: 90%;
+}
+
+.spinner-dialog-container {
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+
+/*# sourceMappingURL=main.css.map*/
